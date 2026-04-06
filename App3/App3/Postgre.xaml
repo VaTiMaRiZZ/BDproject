@@ -1,0 +1,64 @@
+﻿<Window x:Class="App3.Postgre"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:App3"
+        mc:Ignorable="d"
+        Title="Postgre" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Button Width="120" Height="30" x:Name="linqClick" Click="linq_Click" Content="Linq" Margin="10"/>
+            <Button Width="120" Height="30" x:Name="sqlClick" Click="sql_Click" Content="Sql"/>
+        </StackPanel>
+        <StackPanel x:Name="sqlQuery" Visibility="Collapsed" Grid.Row="1">
+            <StackPanel Orientation="Horizontal" >
+                <ComboBox Width="120" Height="30" x:Name="oneSqlTable" SelectionChanged="oneSqlTablePostgre_SelectionChanged" Margin="10"/>
+                <ComboBox Width="120" Height="30" x:Name="twoSqlTable" SelectionChanged="twoSqlTablePostgre_SelectionChanged"/>
+            </StackPanel>
+            <DataGrid x:Name="gridSql" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="grid_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Грант" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Дата начала" Binding="{Binding DateStart}"/>
+                    <DataGridTextColumn Header="Дата окончания" Binding="{Binding DateEnd}"/>
+                    <DataGridTextColumn Header="Организация" Binding="{Binding Organization}"/>
+                    <DataGridTextColumn Header="Сумма" Binding="{Binding Summa}"/>
+                    <DataGridTextColumn Header="ФИО ученого" Binding="{Binding FioScient}"/>
+                    <DataGridTextColumn Header="Название направления" Binding="{Binding NameDirect}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        <StackPanel x:Name="linqQuery" Grid.Row="1">
+            <StackPanel Orientation="Horizontal" >
+                <ComboBox Width="120" Height="30" x:Name="oneTableLinq" SelectionChanged="oneTableLinq_SelectionChanged" Margin="10"/>
+                <ComboBox Width="120" Height="30" x:Name="twoTableLinq" SelectionChanged="twoTableLinq_SelectionChanged"/>
+            </StackPanel>
+            <DataGrid x:Name="gridLinq" AutoGenerateColumns="False" IsReadOnly="True" SelectionChanged="grid_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Грант" Binding="{Binding Name}"/>
+                    <DataGridTextColumn Header="Дата начала" Binding="{Binding DateStart}"/>
+                    <DataGridTextColumn Header="Дата окончания" Binding="{Binding DateEnd}"/>
+                    <DataGridTextColumn Header="Организация" Binding="{Binding Organization}"/>
+                    <DataGridTextColumn Header="Сумма" Binding="{Binding Summa}"/>
+                    <DataGridTextColumn Header="ФИО ученого" Binding="{Binding FioScient}"/>
+                    <DataGridTextColumn Header="Название направления" Binding="{Binding NameDirect}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
+
+            <TextBox x:Name="grantTb" Margin="10" Width="100"/>
+            <TextBox x:Name="dateStartTb" Margin="10" Width="100"/>
+            <TextBox x:Name="dateEndTb" Margin="10" Width="100"/>
+            <TextBox x:Name="organizationTb" Margin="10" Width="100"/>
+            <TextBox x:Name="summaTb" Margin="10" Width="100"/>
+            <Button x:Name="saveBt" Click="saveBt_Click" Content="Добавить/Обновить" Margin="10" Width="150"/>
+            <Button x:Name="deleteBt" Click="deleteBt_Click" Content="Удалить" Margin="10" Width="100"/>
+        </StackPanel>
+    </Grid>
+</Window>
