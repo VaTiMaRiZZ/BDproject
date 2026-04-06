@@ -1,0 +1,53 @@
+﻿<Window x:Class="AppFive.Mysql"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AppFive"
+        mc:Ignorable="d"
+        Title="Mysql" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button x:Name="sql" Content="SQL" Click="sql_Click" Margin="10" Width="120" Height="30"/>
+            <Button x:Name="linq" Content="LINQ" Click="linq_Click" Margin="10" Width="120" Height="30"/>
+            <Button x:Name="exit" Content="Выход" Click="exit_Click" Margin="10" Width="120" Height="30"/>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="1" x:Name="linqQuery" Visibility="Visible">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                <ComboBox x:Name="fioCbLinq" SelectionChanged="fioCb_SelectionChanged" Width="200" Margin="10" Height="30"/>
+                <ComboBox x:Name="directCbLinq" SelectionChanged="directCb_SelectionChanged" Width="200" Margin="10" Height="30"/>
+            </StackPanel>
+            <ScrollViewer VerticalScrollBarVisibility="Auto"  Height="350">
+                <ListBox x:Name="gridLinq">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <local:UserControlOne DataContext="{Binding}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </ScrollViewer>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="1" x:Name="sqlQuery" Visibility="Collapsed">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                <ComboBox x:Name="fioCbSql" SelectionChanged="fioCbSql_SelectionChanged" Width="200" Margin="10" Height="30"/>
+                <ComboBox x:Name="directCbSql" SelectionChanged="directCbSql_SelectionChanged" Width="200" Margin="10" Height="30"/>
+            </StackPanel>
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Height="350">
+                <ListBox x:Name="gridSql">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <local:UserControlOne DataContext="{Binding}"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </ScrollViewer>
+        </StackPanel>
+    </Grid>
+</Window>
